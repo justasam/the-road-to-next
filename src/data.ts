@@ -2,7 +2,7 @@ type Ticket = {
   id: string;
   title: string;
   content: string;
-  status: "DONE" | "TODO" | "IN_PROGRESS";
+  status: "DONE" | "OPEN" | "IN_PROGRESS";
 };
 
 export const initialTickets: Ticket[] = [
@@ -10,7 +10,7 @@ export const initialTickets: Ticket[] = [
     id: "1",
     title: "First ticket",
     content: "This is the first ticket",
-    status: "TODO",
+    status: "OPEN",
   },
   {
     id: "2",
