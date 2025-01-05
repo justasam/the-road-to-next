@@ -20,6 +20,7 @@ const TicketItem = ({ ticket, isDetail }: TicketItemProps) => {
 
     return (
       <Link
+        prefetch
         href={ticketPath(ticket.id)}
         className={buttonVariants({ variant: "outline", size: "icon" })}
       >
