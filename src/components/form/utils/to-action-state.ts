@@ -5,11 +5,13 @@ export type ActionState = {
   message: string;
   payload?: FormData;
   fieldErrors: Record<string, string[] | undefined>;
+  timestamp: number;
 };
 
 export const EMPTY_ACTION_STATE: ActionState = {
   message: "",
   fieldErrors: {},
+  timestamp: Date.now(),
 };
 
 export const fromErrorToActionState = (
@@ -23,6 +25,7 @@ export const fromErrorToActionState = (
       message: "",
       fieldErrors: error.flatten().fieldErrors,
       payload: formData,
+      timestamp: Date.now(),
     };
   } else if (error instanceof Error) {
     // If another error instance, e.g. a database error, we return the error message
@@ -31,6 +34,7 @@ export const fromErrorToActionState = (
       message: error.message,
       fieldErrors: {},
       payload: formData,
+      timestamp: Date.now(),
     };
   } else {
     // If we don't know what the error is, we return a generic error message
@@ -39,6 +43,7 @@ export const fromErrorToActionState = (
       message: "An unknown error occurred",
       fieldErrors: {},
       payload: formData,
+      timestamp: Date.now(),
     };
   }
 };
@@ -51,5 +56,6 @@ export const toActionState = (
     status,
     message,
     fieldErrors: {},
+    timestamp: Date.now(),
   };
 };
